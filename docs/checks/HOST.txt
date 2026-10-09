@@ -1,0 +1,9 @@
+host: initialize
+host: scan
+host: measured gain
+host: sidechain prepared
+host: sidechain audio
+host: spectral prepared
+host: editor ready
+MEASURE: colour reports 4 samples; impulse peak 5 samples (IIR phase is frequency dependent)
+PASS: real VST3 scan/load, mono/stereo, +6 dB EQ, external SC, automation/state, native editor, bypass, empty blocks, exact impulse latency 0 Live / 2048 Spectral, zero Live latency at 44.1/48/96/192 kHz and 32/128/512 samples, active causal spectral band, colour latency 4 samples

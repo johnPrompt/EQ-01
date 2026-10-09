@@ -1,0 +1,9 @@
+PASS: flat identity, bell gain, steep filters, allpass, M/S isolation, above/below dynamics, sidechain, relative detection
+PASS: STFT reconstruction max error 8.9407e-08, exact 2048 sample latency, stereo preservation, selective spectral suppression
+Causal resonance target -8.04776 dB, outside -0.000228978 dB
+PASS: causal selective resonance suppression, zero audio buffer delay, stereo/M/S preservation, missing sidechain, relative invariance
+PASS: 24-band automation stress at 44.1/48/96/192 kHz, finite bounded output
+PASS: 8 ms topology crossfade uses old/new filter paths without audio buffering
+BENCH: 1 causal resonance bands / 48 kHz stereo / 128-sample blocks: 23.9025 ms elapsed per 1000 ms audio
+BENCH: 8 causal resonance bands / 48 kHz stereo / 128-sample blocks: 80.8148 ms elapsed per 1000 ms audio
+BENCH: 24 causal resonance bands / 48 kHz stereo / 128-sample blocks: 221.562 ms elapsed per 1000 ms audio

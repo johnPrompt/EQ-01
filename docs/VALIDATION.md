@@ -39,3 +39,7 @@ Broad music corpus, level-matched blind comparison, long DAW sessions, in-play e
 Windows x64 build 0.3.2 passed DSP, native VST3 and native editor interaction checks on 2026-10-10. The VST3 scan explicitly checks the product name EQ-01. Clean Live remains 0 samples, Clean Spectral 2048 samples and colour 4 reported samples at 48 kHz. Source, parameter IDs, VST3 codes and state schema preserve predecessor compatibility. New preset files use `.eq01preset`; legacy `.cspreset` files remain readable.
 
 macOS release checks are performed by `.github/workflows/macos.yml`: universal architecture/signature verification and native DSP/VST3 tests on Intel and Apple Silicon. Refer to the release's workflow result for completion and logs. Full Ableton/other DAW session testing remains outstanding.
+
+## 0.3.3 header layout update
+
+Settings is now before the language switch; EN/RU is the rightmost header control. Windows native VST3 and editor checks passed on 2026-10-10, including 1080x680 and 820x560 layouts. Updated native screenshots and logs are included. Audio parameters and plug-in identity are unchanged. macOS 0.3.2 passed native Intel and Apple Silicon checks; 0.3.3 is checked independently by its release workflow.

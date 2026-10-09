@@ -16,7 +16,7 @@ public:
     void processBlockBypassed(juce::AudioBuffer<float>&,juce::MidiBuffer&) override;
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
-    const juce::String getName() const override { return "EQ-11"; }
+    const juce::String getName() const override { return "EQ-01"; }
     bool acceptsMidi() const override { return false; }
     bool producesMidi() const override { return false; }
     double getTailLengthSeconds() const override { return 0.25; }

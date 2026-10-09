@@ -1,4 +1,4 @@
-# Building EQ-11
+# Building EQ-01
 
 Requires CMake 3.22+, C++17 and JUCE 7.0.12 pinned to commit `4f43011b96eb0636104cb3e433894cda98243626`. Apply the platform compatibility patch in `Build/` to a separate framework checkout.
 
@@ -11,7 +11,7 @@ cmake --build build --config Release --target EQ1_VST3 EQ1DSPTest EQ1Preview EQ1
 
 For LLVM-MinGW select the MinGW Makefiles generator and its compiler/make tools. Non-ASCII Windows paths may require short paths with that toolchain. The local Windows binary uses LLVM-MinGW 20261006, Clang 23.1.3 and static C++ runtime linkage. Visual Studio is an alternative, untested build route for this artifact.
 
-Build targets keep the internal identifier `EQ1`; the product and installable bundle are named `EQ-11`. Outputs are under `build/EQ1_artefacts/Release`. `EQ1_Standalone` is a development target excluded from public downloads.
+Build targets keep the internal identifier `EQ1`; the product and installable bundle are named `EQ-01`. Outputs are under `build/EQ1_artefacts/Release`. `EQ1_Standalone` is a development target excluded from public downloads.
 
 ## macOS
 
@@ -19,7 +19,7 @@ Apply `python3 Build/patch_juce_macos.py <JUCE-path>`, then configure with `-DCM
 
 ## Checks and packaging
 
-Run `EQ1DSPTest`, `EQ1HostCheck <absolute-EQ-11.vst3-path>` and, on Windows, `EQ1Preview <absolute-screenshot-output-directory>`. Use `.exe` and ASCII-compatible arguments with LLVM-MinGW. Checks do not install plug-ins or change DAW settings.
+Run `EQ1DSPTest`, `EQ1HostCheck <absolute-EQ-01.vst3-path>` and, on Windows, `EQ1Preview <absolute-screenshot-output-directory>`. Use `.exe` and ASCII-compatible arguments with LLVM-MinGW. Checks do not install plug-ins or change DAW settings.
 
 DSP checks need no JUCE:
 

@@ -1,4 +1,4 @@
-# Validation scope — 0.3.3
+# Validation scope — 0.3.2
 
 The logs in `checks/` refer to the packaged source and binaries. These are measurements and native interaction checks, not an Ableton certification or a blind comparison with commercial products.
 
@@ -34,8 +34,8 @@ Numeric entry, M/S, clipboard, same-process peer copying, project restore, schem
 
 Broad music corpus, level-matched blind comparison, long DAW sessions, in-play engine/colour latency reconfiguration, complete alias/phase specification, screen readers and Windows HiDPI matrix, surround, AAX/CLAP binaries, remote instance editing and intelligent balancing. These remain documented competitive gaps.
 
-## EQ-11 release checks
+## EQ-01 release checks
 
-Windows x64 build 0.3.3 passed DSP, native VST3 and native editor interaction checks on 2026-10-10. The VST3 scan explicitly checks the product name EQ-11. Clean Live remains 0 samples, Clean Spectral 2048 samples and colour 4 reported samples at 48 kHz. Source, parameter IDs, VST3 codes and state schema preserve predecessor compatibility. New preset files use `.eq11preset`; legacy `.cspreset` files remain readable.
+Windows x64 build 0.3.2 passed DSP, native VST3 and native editor interaction checks on 2026-10-10. The VST3 scan explicitly checks the product name EQ-01. Clean Live remains 0 samples, Clean Spectral 2048 samples and colour 4 reported samples at 48 kHz. Source, parameter IDs, VST3 codes and state schema preserve predecessor compatibility. New preset files use `.eq01preset`; legacy `.cspreset` files remain readable.
 
 macOS release checks are performed by `.github/workflows/macos.yml`: universal architecture/signature verification and native DSP/VST3 tests on Intel and Apple Silicon. Refer to the release's workflow result for completion and logs. Full Ableton/other DAW session testing remains outstanding.

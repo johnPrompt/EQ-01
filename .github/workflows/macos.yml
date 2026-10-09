@@ -83,15 +83,15 @@ jobs:
         run: |
           cd candidate
           shasum -a 256 -c *SHA256.txt
-          ditto -x -k EQ-11-*-mac-vst3.zip extracted
+          ditto -x -k EQ-01-*-mac-vst3.zip extracted
           tar -xzf validation-tools.tar.gz
-          lipo extracted/EQ-11.vst3/Contents/MacOS/EQ-11 -verify_arch x86_64 arm64
-          codesign --verify --deep --strict extracted/EQ-11.vst3
+          lipo extracted/EQ-01.vst3/Contents/MacOS/EQ-01 -verify_arch x86_64 arm64
+          codesign --verify --deep --strict extracted/EQ-01.vst3
       - name: Run DSP and native VST3 checks
         run: |
           test "$(uname -m)" = '${{ matrix.arch }}'
           arch -${{ matrix.arch }} candidate/EQ1DSPTest
-          plugin="$(find "$PWD/candidate/extracted" -name EQ-11.vst3 -type d)"
+          plugin="$(find "$PWD/candidate/extracted" -name EQ-01.vst3 -type d)"
           arch -${{ matrix.arch }} candidate/EQ1HostCheck "$plugin" unused
 
   publish:
@@ -112,14 +112,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          archive="$(find dist -maxdepth 1 -name 'EQ-11-*-mac-vst3.zip')"
+          archive="$(find dist -maxdepth 1 -name 'EQ-01-*-mac-vst3.zip')"
           filename="$(basename "$archive")"
-          version="${filename#EQ-11-}"
+          version="${filename#EQ-01-}"
           version="${version%-mac-vst3.zip}"
           tag="v$version"
           python3 Build/render_release_notes.py "$version" "$RUNNER_TEMP/release-notes.md"
           if ! gh release view "$tag" >/dev/null 2>&1; then
-            gh release create "$tag" --target "${{ github.sha }}" --title "EQ-11 $version" --prerelease --notes-file "$RUNNER_TEMP/release-notes.md"
+            gh release create "$tag" --target "${{ github.sha }}" --title "EQ-01 $version" --prerelease --notes-file "$RUNNER_TEMP/release-notes.md"
           fi
           gh release view "$tag" --json assets --jq '.assets[].name' > "$RUNNER_TEMP/release-assets.txt"
           if grep -Fxq "$filename" "$RUNNER_TEMP/release-assets.txt"; then

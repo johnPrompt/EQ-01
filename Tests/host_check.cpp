@@ -16,7 +16,7 @@ int main(int argc,char** argv) {
     juce::KnownPluginList list; juce::OwnedArray<juce::PluginDescription> descriptions;
     for(auto* format:formats.getFormats()) list.scanAndAddFile(juce::String::fromUTF8(argv[1]),true,descriptions,*format);
     std::cerr<<"host: scan\n";
-    expect(descriptions.size()==1,"VST3 scan failed"); expect(descriptions[0]->name=="EQ-01","wrong product name");
+    expect(descriptions.size()==1,"VST3 scan failed"); expect(descriptions[0]->name=="EQ-11","wrong product name");
     juce::String error; auto plugin=formats.createPluginInstance(*descriptions[0],48000,256,error); expect(plugin!=nullptr,error.toRawUTF8());
     plugin->setPlayConfigDetails(2,2,48000,256); plugin->prepareToPlay(48000,256);
     const int liveLatency=plugin->getLatencySamples(); expect(liveLatency==0,"clean Live must report zero delay");

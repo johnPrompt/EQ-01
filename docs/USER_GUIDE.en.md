@@ -1,4 +1,4 @@
-# EQ-01 user guide
+# EQ-11 user guide
 
 Install the complete bundle using the [platform instructions](../README.md#download-and-install). Public downloads contain the VST3 plug-in.
 
@@ -28,7 +28,7 @@ Density controls Live filter-bank selectivity or Spectral frequency smoothing. D
 
 Compare with original stays visible in the header. The bottom bar holds engine/delay, colour, output, Sketch, spectrum freeze and difference monitoring. Freeze stops the image. Difference monitors processing minus the delay-aligned original. The gear holds drive, width, A/B and copying from another same-process instance.
 
-Presets save as `.eq01preset`; older `.cspreset` files remain readable. EN/RU is stored in the project. A/B and undo history currently last while the editor is open. Right-click a band for parameters, audition, copying and deletion. Delete removes the selected band. Ctrl+C/Ctrl+V copies/pastes; Ctrl+Z/Ctrl+Shift+Z undoes/redoes. Sketch fits up to eight Bell extrema and does not reproduce arbitrary curves exactly.
+Presets save as `.eq11preset`; older `.cspreset` files remain readable. EN/RU is stored in the project. A/B and undo history currently last while the editor is open. Right-click a band for parameters, audition, copying and deletion. Delete removes the selected band. Ctrl+C/Ctrl+V copies/pastes; Ctrl+Z/Ctrl+Shift+Z undoes/redoes. Sketch fits up to eight Bell extrema and does not reproduce arbitrary curves exactly.
 
 ## Latency and limits
 
@@ -36,4 +36,4 @@ Clean + Live adds zero samples of buffer delay, including dynamics and causal re
 
 Subtle/Warm colour uses saturation and 2× IIR oversampling with a small delay. Drive controls intensity. No specific hardware is emulated. Change engine/colour while stopped so the host can update delay compensation.
 
-Output has no limiter. Version 0.3.2 is a development alpha. See [validation](VALIDATION.md) for measured checks and open DAW testing.
+Output has no limiter. Version 0.3.3 is a development alpha. See [validation](VALIDATION.md) for measured checks and open DAW testing.

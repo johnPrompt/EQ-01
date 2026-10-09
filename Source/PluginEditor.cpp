@@ -292,7 +292,7 @@ EQ1Editor::EQ1Editor(EQ1Processor& p)
    sliders{&frequency,&gain,&q,&outputGain,&threshold,&above,&below,&attack,&release,&ratio,&knee,&relative,&detectorFrequency,&detectorQ,&drive,&width,&density} {
     setLookAndFeel(&skin); setResizable(true,true); setResizeLimits(820,560,1600,1100); setSize(1080,680);
     russian=p.parameters.state.getProperty("editorLanguage","en").toString()=="ru";
-    setTitle("EQ-01"); addAndMakeVisible(graph); addChildComponent(bandPanel); addChildComponent(settingsPanel);
+    setTitle("EQ-11"); addAndMakeVisible(graph); addChildComponent(bandPanel); addChildComponent(settingsPanel);
     bandPanel.setComponentID("bandPanel"); settingsPanel.setComponentID("settingsPanel");
     bandPanel.movable=true; bandPanel.setMouseCursor(juce::MouseCursor::DraggingHandCursor);
     bandPanel.onMove=[this]{panelPlaced=true; layoutPanels();};
@@ -517,7 +517,7 @@ void EQ1Editor::layoutPanels() {
     bandPanel.toFront(false); settingsPanel.toFront(false); bandPanel.repaint(); settingsPanel.repaint(); graph.repaint();
 }
 void EQ1Editor::paint(juce::Graphics& g) {
-    g.fillAll(background); label(g,"EQ-01",{24,16,172,32},20,text);
+    g.fillAll(background); label(g,"EQ-11",{24,16,172,32},20,text);
     g.setColour(line); g.drawHorizontalLine(getHeight()-57,20.f,getWidth()-20.f);
     if(getWidth()>=1000) {
         const bool listening=processor.auditionBand.load()>=0;
@@ -692,12 +692,12 @@ void EQ1Editor::instanceMenu() {
     juce::Component::SafePointer<EQ1Editor> safe(this); menu.showMenuAsync(juce::PopupMenu::Options().withTargetComponent(&settings),[safe,peers](int result){ if(!safe||result<=0||static_cast<size_t>(result)>peers.size()) return; safe->checkpoint(); safe->processor.copyFromPeer(peers[static_cast<size_t>(result-1)].id); safe->refresh(); });
 }
 void EQ1Editor::savePreset() {
-    fileChooser=std::make_unique<juce::FileChooser>(tr("Save EQ-01 preset","Сохранить пресет EQ-01"),juce::File{},"*.eq01preset");
+    fileChooser=std::make_unique<juce::FileChooser>(tr("Save EQ-11 preset","Сохранить пресет EQ-11"),juce::File{},"*.eq11preset");
     juce::Component::SafePointer<EQ1Editor> safe(this);
-    fileChooser->launchAsync(juce::FileBrowserComponent::saveMode|juce::FileBrowserComponent::canSelectFiles|juce::FileBrowserComponent::warnAboutOverwriting,[safe](const juce::FileChooser& c){ if(!safe) return; auto file=c.getResult(); if(file==juce::File{}) return; juce::MemoryBlock state; safe->processor.getStateInformation(state); if(!file.withFileExtension("eq01preset").replaceWithData(state.getData(),state.getSize())) juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::WarningIcon,"EQ-01",safe->tr("Could not save preset. Choose a writable folder.",u8"Не удалось сохранить пресет. Выбери доступную для записи папку.")); });
+    fileChooser->launchAsync(juce::FileBrowserComponent::saveMode|juce::FileBrowserComponent::canSelectFiles|juce::FileBrowserComponent::warnAboutOverwriting,[safe](const juce::FileChooser& c){ if(!safe) return; auto file=c.getResult(); if(file==juce::File{}) return; juce::MemoryBlock state; safe->processor.getStateInformation(state); if(!file.withFileExtension("eq11preset").replaceWithData(state.getData(),state.getSize())) juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::WarningIcon,"EQ-11",safe->tr("Could not save preset. Choose a writable folder.",u8"Не удалось сохранить пресет. Выбери доступную для записи папку.")); });
 }
 void EQ1Editor::loadPreset() {
-    fileChooser=std::make_unique<juce::FileChooser>(tr("Load EQ-01 preset","Загрузить пресет EQ-01"),juce::File{},"*.eq01preset;*.cspreset");
+    fileChooser=std::make_unique<juce::FileChooser>(tr("Load EQ-11 preset","Загрузить пресет EQ-11"),juce::File{},"*.eq11preset;*.eq01preset;*.cspreset");
     juce::Component::SafePointer<EQ1Editor> safe(this);
-    fileChooser->launchAsync(juce::FileBrowserComponent::openMode|juce::FileBrowserComponent::canSelectFiles,[safe](const juce::FileChooser& c){ if(!safe) return; auto file=c.getResult(); if(file==juce::File{}) return; juce::MemoryBlock state; if(!file.loadFileAsData(state)||state.getSize()>4*1024*1024) return; auto xml=juce::AudioProcessor::getXmlFromBinary(state.getData(),static_cast<int>(state.getSize())); if(!xml||!xml->hasTagName("CurveShaperState")) {juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::WarningIcon,"EQ-01",safe->tr("This is not a EQ-01 preset.",u8"Это не пресет EQ-01.")); return;} safe->checkpoint(); safe->processor.setStateInformation(state.getData(),static_cast<int>(state.getSize())); safe->refresh(); });
+    fileChooser->launchAsync(juce::FileBrowserComponent::openMode|juce::FileBrowserComponent::canSelectFiles,[safe](const juce::FileChooser& c){ if(!safe) return; auto file=c.getResult(); if(file==juce::File{}) return; juce::MemoryBlock state; if(!file.loadFileAsData(state)||state.getSize()>4*1024*1024) return; auto xml=juce::AudioProcessor::getXmlFromBinary(state.getData(),static_cast<int>(state.getSize())); if(!xml||!xml->hasTagName("CurveShaperState")) {juce::AlertWindow::showMessageBoxAsync(juce::MessageBoxIconType::WarningIcon,"EQ-11",safe->tr("This is not an EQ-11 preset.",u8"Это не пресет EQ-11.")); return;} safe->checkpoint(); safe->processor.setStateInformation(state.getData(),static_cast<int>(state.getSize())); safe->refresh(); });
 }

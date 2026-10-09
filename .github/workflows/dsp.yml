@@ -1,0 +1,11 @@
+name: DSP checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  dsp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: g++ -std=c++17 -O2 -ISource Tests/dsp_test.cpp -o dsp-test
+      - run: ./dsp-test

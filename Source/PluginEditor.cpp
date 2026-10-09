@@ -433,7 +433,7 @@ void EQ1Editor::translate() {
 void EQ1Editor::resized() {
     const int w=getWidth(),footer=getHeight()-55;
     preset.setBounds(184,16,180,32); undoButton.setBounds(w-424,16,32,32); redoButton.setBounds(w-384,16,32,32);
-    bypass.setBounds(w-344,16,216,32); language.setBounds(w-120,16,56,32); settings.setBounds(w-56,16,32,32);
+    bypass.setBounds(w-344,16,216,32); settings.setBounds(w-120,16,32,32); language.setBounds(w-80,16,56,32);
     graph.setBounds(20,64,w-40,getHeight()-126);
     mode.setBounds(20,footer+10,148,32); character.setBounds(178,footer+10,142,32);
     captions[3].setBounds(330,footer+1,86,16); outputGain.setBounds(330,footer+18,86,29);

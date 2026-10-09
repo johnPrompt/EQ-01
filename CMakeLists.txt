@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(EQ1 VERSION 0.3.2 LANGUAGES C CXX)
+project(EQ1 VERSION 0.3.3 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(EQ1_BUILD_PLUGIN "Build native plug-ins and host checks" ON)

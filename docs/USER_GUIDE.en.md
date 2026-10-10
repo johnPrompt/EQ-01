@@ -2,6 +2,8 @@
 
 Install the complete bundle using the [platform instructions](../README.md#download-and-install). Public downloads contain the VST3 plug-in.
 
+Download the `win-vst3.zip` or `mac-vst3.zip` asset from [Releases](https://github.com/alexeyPetrushin/EQ-01/releases). **Code → Download ZIP** and **Source code** contain source files, which must be compiled before they can become a plug-in. The ready-made archives install by copying the entire `EQ-01.vst3` bundle; there is no separate installer.
+
 ## Graph and band parameters
 
 Hover previews a proposed filter. With no selection, click to add a band; with a selection, clicking empty space deselects it. Double-click empty space or Ctrl+click to add directly. Graph edges suggest cuts/shelves and the centre suggests Bell. Change the shape in the band panel.
@@ -36,4 +38,4 @@ Clean + Live adds zero samples of buffer delay, including dynamics and causal re
 
 Subtle/Warm colour uses saturation and 2× IIR oversampling with a small delay. Drive controls intensity. No specific hardware is emulated. Change engine/colour while stopped so the host can update delay compensation.
 
-Output has no limiter. Version 0.3.2 is a development alpha. See [validation](VALIDATION.md) for measured checks and open DAW testing.
+Output has no limiter. Version 0.3.3 is a development alpha. See [validation](VALIDATION.md) for measured checks and open DAW testing.
